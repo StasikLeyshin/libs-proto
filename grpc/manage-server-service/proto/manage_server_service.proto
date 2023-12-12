@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./";
+
+import "manage-server-service/proto/server.proto";
+
+service ManageService {
+  rpc GetServers(GetServersRequest) returns (GetServersResponse);
+}
