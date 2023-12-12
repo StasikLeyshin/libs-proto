@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./";
+
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "manage-server-service/proto/server.proto";
+
+service ManageService {
+  rpc GetServers(GetServersRequest) returns (GetServersResponse) {
+    option (google.api.http) = {
+      get: "/v1/servers"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      description: "API для получения сактивных сервисов";
+      summary: "Get Servers";
+    };
+  }
+}

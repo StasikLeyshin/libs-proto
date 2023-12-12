@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./";
+
+message Server {
+  string name = 1;
+  string host = 2;
+  string port = 3;
+  string type = 4;
+}
+
+message GetServersRequest {
+}
+
+message GetServersResponse {
+  repeated Server servers = 1;
+}
