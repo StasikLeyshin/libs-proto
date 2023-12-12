@@ -4,7 +4,7 @@
 // - protoc             v4.25.1
 // source: manage-server-service/proto/manage_server_service.proto
 
-package __
+package pb
 
 import (
 	context "context"

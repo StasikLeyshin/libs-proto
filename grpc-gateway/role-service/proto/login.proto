@@ -5,7 +5,7 @@ package pb;
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "./";
+option go_package = "./;pb";
 
 message User {
   string username = 1;

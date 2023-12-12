@@ -2,11 +2,11 @@
 // source: manage-server-service/proto/manage_server_service.proto
 
 /*
-Package __ is a reverse proxy.
+Package pb is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package __
+package pb
 
 import (
 	"context"
