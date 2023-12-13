@@ -14,10 +14,12 @@ else
 endif
 
 ifeq ($(WINDOWS),yes)
-   mkdir = mkdir $(subst /,\,$(1)) > nul 2>&1 || (exit 0)
+   mkdir_grpc = mkdir $(subst /,\,$(DIR_GRPC)/$(1)) > nul 2>&1 || (exit 0)
+   mkdir_grpc_gateway = $(subst /,\,$(1)) > nul 2>&1 || (exit 0)
    echo = echo $(1)
 else
-   mkdir = mkdir -p $(1)
+   mkdir_grpc = mkdir -p $(1)
+   mkdir_grpc_gateway = mkdir -p $(1)
    echo = echo $(1)
 endif
 
@@ -40,13 +42,10 @@ all: gen_grpc_gateway_manage_server_service \
      gen_grpc_gateway_role_service
 
 gen_grpc_gateway_manage_server_service:
-	$(call mkdir,$(DIR_MANAGE_SERVER_SERVICE))
 	$(call gen_grpc_gateway_proto,$(DIR_MANAGE_SERVER_SERVICE))
 
 gen_grpc_manage_server_service:
-	$(call mkdir,$(DIR_MANAGE_SERVER_SERVICE))
 	$(call gen_grpc_proto,$(DIR_MANAGE_SERVER_SERVICE))
 
 gen_grpc_gateway_role_service:
-	$(call mkdir,$(DIR_ROLE_SERVICE))
 	$(call gen_grpc_gateway_proto,$(DIR_ROLE_SERVICE))

@@ -5,6 +5,10 @@ on:
     branches:
       - master
       - master
+    paths:
+      - 'grpc/**/pb*.pb.go'
+      - 'grpc-gateway/**/pb*.pb.go'
+      - '.github/workflows/release.yml'
 
 jobs:
   release:

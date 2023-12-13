@@ -26,7 +26,9 @@
     [
       "@semantic-release/release-notes-generator",
       {
-        "preset":"ESLint"
+        "preset":"ESLint",
+        "linkCompare": false,
+        "linkReferences": false
       }
     ],
     [
