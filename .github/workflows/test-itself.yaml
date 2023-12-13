@@ -1,6 +1,9 @@
 name: "test itself"
 on:
   push:
+    branches:
+      - master
+      - master
 jobs:
   test:
     runs-on: ubuntu-16.04
