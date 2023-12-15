@@ -6,7 +6,6 @@ DIR_GRPC=grpc
 DIR_MANAGE_SERVER_SERVICE=manage-server-service
 DIR_ROLE_SERVICE=role-service
 
-
 ifeq ($(shell echo "check_quotes"),"check_quotes")
    WINDOWS := yes
 else
