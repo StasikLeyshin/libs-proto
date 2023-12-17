@@ -1,3 +1,5 @@
 package pb
 
-func main() {}
+func main() {
+	return
+}
