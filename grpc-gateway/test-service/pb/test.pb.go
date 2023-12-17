@@ -1,1 +1,3 @@
 package pb
+
+func main() {}
