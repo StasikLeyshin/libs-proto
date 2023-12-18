@@ -13,7 +13,6 @@ message Server {
 }
 
 message GetServersRequest {
-  optional string search = 1;
 }
 
 message GetServersResponse {
