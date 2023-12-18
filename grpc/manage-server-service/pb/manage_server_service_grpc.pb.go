@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             v4.25.1
-// source: manage-server-service/proto/manage_server_service.proto
+// source: grpc/manage-server-service/proto/manage_server_service.proto
 
 package pb
 
@@ -19,6 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
+	ManageService_GetServer_FullMethodName  = "/pb.ManageService/GetServer"
 	ManageService_GetServers_FullMethodName = "/pb.ManageService/GetServers"
 )
 
@@ -26,6 +27,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ManageServiceClient interface {
+	GetServer(ctx context.Context, in *GetServerRequest, opts ...grpc.CallOption) (*GetServerResponse, error)
 	GetServers(ctx context.Context, in *GetServersRequest, opts ...grpc.CallOption) (*GetServersResponse, error)
 }
 
@@ -35,6 +37,15 @@ type manageServiceClient struct {
 
 func NewManageServiceClient(cc grpc.ClientConnInterface) ManageServiceClient {
 	return &manageServiceClient{cc}
+}
+
+func (c *manageServiceClient) GetServer(ctx context.Context, in *GetServerRequest, opts ...grpc.CallOption) (*GetServerResponse, error) {
+	out := new(GetServerResponse)
+	err := c.cc.Invoke(ctx, ManageService_GetServer_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *manageServiceClient) GetServers(ctx context.Context, in *GetServersRequest, opts ...grpc.CallOption) (*GetServersResponse, error) {
@@ -50,6 +61,7 @@ func (c *manageServiceClient) GetServers(ctx context.Context, in *GetServersRequ
 // All implementations must embed UnimplementedManageServiceServer
 // for forward compatibility
 type ManageServiceServer interface {
+	GetServer(context.Context, *GetServerRequest) (*GetServerResponse, error)
 	GetServers(context.Context, *GetServersRequest) (*GetServersResponse, error)
 	mustEmbedUnimplementedManageServiceServer()
 }
@@ -58,6 +70,9 @@ type ManageServiceServer interface {
 type UnimplementedManageServiceServer struct {
 }
 
+func (UnimplementedManageServiceServer) GetServer(context.Context, *GetServerRequest) (*GetServerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetServer not implemented")
+}
 func (UnimplementedManageServiceServer) GetServers(context.Context, *GetServersRequest) (*GetServersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetServers not implemented")
 }
@@ -72,6 +87,24 @@ type UnsafeManageServiceServer interface {
 
 func RegisterManageServiceServer(s grpc.ServiceRegistrar, srv ManageServiceServer) {
 	s.RegisterService(&ManageService_ServiceDesc, srv)
+}
+
+func _ManageService_GetServer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetServerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManageServiceServer).GetServer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ManageService_GetServer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManageServiceServer).GetServer(ctx, req.(*GetServerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _ManageService_GetServers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -100,10 +133,14 @@ var ManageService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ManageServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "GetServer",
+			Handler:    _ManageService_GetServer_Handler,
+		},
+		{
 			MethodName: "GetServers",
 			Handler:    _ManageService_GetServers_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "manage-server-service/proto/manage_server_service.proto",
+	Metadata: "grpc/manage-server-service/proto/manage_server_service.proto",
 }

@@ -22,7 +22,7 @@ else
    echo = echo $(1)
 endif
 
-gen_grpc_gateway_proto = protoc --proto_path=$(DIR_GRPC_GATEWAY) \
+gen_grpc_gateway_proto = protoc --proto_path=. \
                                 --go_out=$(DIR_GRPC_GATEWAY)/$(1)/pb \
                                 --go-grpc_out=$(DIR_GRPC_GATEWAY)/$(1)/pb \
                                 --grpc-gateway_out=$(DIR_GRPC_GATEWAY)/$(1)/pb \
@@ -30,7 +30,7 @@ gen_grpc_gateway_proto = protoc --proto_path=$(DIR_GRPC_GATEWAY) \
                                 --openapiv2_opt=allow_merge=true,merge_file_name=$(1) \
                                 $(DIR_GRPC_GATEWAY)/$(1)/proto/*.proto
 
-gen_grpc_proto = protoc --proto_path=$(DIR_GRPC) \
+gen_grpc_proto = protoc --proto_path=. \
                          --go_out=$(DIR_GRPC)/$(1)/pb \
                          --go-grpc_out=$(DIR_GRPC)/$(1)/pb \
                          --grpc-gateway_out=$(DIR_GRPC)/$(1)/pb \

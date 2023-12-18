@@ -12,6 +12,14 @@ message Server {
   string type = 5;
 }
 
+message GetServerRequest {
+  string server_nanoid = 1;
+}
+
+message GetServerResponse {
+  Server server = 1;
+}
+
 message GetServersRequest {
 }
 
