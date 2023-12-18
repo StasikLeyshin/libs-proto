@@ -4,6 +4,10 @@ on:
     branches:
       - master
       - master
+    paths:
+      - 'grpc/**/pb*.pb.go'
+      - 'grpc-gateway/**/pb*.pb.go'
+      - '.github/workflows/test-itself.yml'
 jobs:
   test:
     runs-on: ubuntu-latest

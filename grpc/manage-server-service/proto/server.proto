@@ -5,10 +5,11 @@ package pb;
 option go_package = "./;pb";
 
 message Server {
-  string name = 1;
-  string host = 2;
-  string port = 3;
-  string type = 4;
+  string server_nanoid = 1;
+  string name = 2;
+  string host = 3;
+  string port = 4;
+  string type = 5;
 }
 
 message GetServersRequest {

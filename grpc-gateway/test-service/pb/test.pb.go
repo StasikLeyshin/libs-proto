@@ -1,4 +1,0 @@
-package pb
-
-func main() {
-}
