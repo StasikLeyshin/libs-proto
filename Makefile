@@ -22,7 +22,7 @@ else
    echo = echo $(1)
 endif
 
-gen_grpc_gateway_proto = protoc --proto_path=. \
+gen_grpc_gateway_proto = protoc --proto_path=$(DIR_GRPC_GATEWAY) \
                                 --go_out=$(DIR_GRPC_GATEWAY)/$(1)/pb \
                                 --go-grpc_out=$(DIR_GRPC_GATEWAY)/$(1)/pb \
                                 --grpc-gateway_out=$(DIR_GRPC_GATEWAY)/$(1)/pb \

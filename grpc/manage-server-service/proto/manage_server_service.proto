@@ -8,5 +8,5 @@ import "grpc/manage-server-service/proto/server.proto";
 
 service ManageService {
   rpc GetServer(GetServerRequest) returns (GetServerResponse);
-  rpc GetServers(GetServersRequest) returns (GetServersResponse);
+  //rpc GetServers(GetServersRequest) returns (GetServersResponse);
 }
