@@ -18,17 +18,17 @@ message User {
 }
 
 message LoginRequest {
-  // Логин пользователя
+  // Логин пользователя.
   string username = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     description: "Логин."
     example: "\"ivanivanov\""
     min_length: 1
     max_length: 255
   }];
-  // Логин пользователя
+  // Пароль пользователя.
   string password = 2[(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     description: "Логин."
-    example: "\"ivanivanov\""
+    example: "\"1234567890\""
     min_length: 1
     max_length: 255
   }];
