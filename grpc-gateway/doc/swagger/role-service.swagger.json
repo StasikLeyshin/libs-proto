@@ -99,7 +99,7 @@
     "pbUser": {
       "type": "object",
       "properties": {
-        "userId": {
+        "id": {
           "type": "string"
         },
         "username": {
