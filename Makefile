@@ -33,7 +33,6 @@ gen_grpc_gateway_proto = protoc --proto_path=$(DIR_GRPC_GATEWAY) \
 gen_grpc_proto = protoc --proto_path=. \
                          --go_out=$(DIR_GRPC)/$(1)/pb \
                          --go-grpc_out=$(DIR_GRPC)/$(1)/pb \
-                         --grpc-gateway_out=$(DIR_GRPC)/$(1)/pb \
                          $(DIR_GRPC)/$(1)/proto/*.proto
 
 all: gen_grpc_gateway_manage_server_service \
