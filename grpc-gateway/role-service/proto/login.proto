@@ -8,6 +8,7 @@ import "google/protobuf/timestamp.proto";
 option go_package = "./;pb";
 
 message User {
+  // ID пользователя.
   string id = 1;
   string username = 2;
   string email =  3;
@@ -26,7 +27,7 @@ message LoginRequest {
     max_length: 255
   }];
   // Пароль пользователя.
-  string password = 2[(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  string password = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     description: "Логин."
     example: "\"1234567890\""
     min_length: 1
