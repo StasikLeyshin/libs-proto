@@ -14,6 +14,8 @@ message Server {
 message GetServersRequest {
   string type = 1;
   optional string name = 2;
+  optional string host = 3;
+  optional string port = 4;
 }
 
 message GetServersResponse {
