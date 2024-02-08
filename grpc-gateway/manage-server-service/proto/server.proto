@@ -13,6 +13,7 @@ message Server {
 
 message GetServersRequest {
   string type = 1;
+  optional string name = 2;
 }
 
 message GetServersResponse {
