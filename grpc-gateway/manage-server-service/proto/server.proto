@@ -18,3 +18,11 @@ message GetServersRequest {
 message GetServersResponse {
   repeated Server servers = 1;
 }
+
+message GetServerRequest {
+  string id = 1;
+}
+
+message GetServerResponse {
+  repeated Server server = 1;
+}
