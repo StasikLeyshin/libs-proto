@@ -5,25 +5,28 @@ package pb;
 option go_package = "./;pb";
 
 message Server {
-  string server_nanoid = 1;
+  string id = 1;
   string name = 2;
   string host = 3;
   string port = 4;
   string type = 5;
 }
 
-message GetServerRequest {
-  string server_nanoid = 1;
-}
-
-message GetServerResponse {
-  Server server = 1;
-}
-
 message GetServersRequest {
-  optional string search = 1;
+  string type = 1;
+  optional string name = 2;
+  optional string host = 3;
+  optional string port = 4;
 }
 
 message GetServersResponse {
   repeated Server servers = 1;
+}
+
+message GetServerRequest {
+  string id = 1;
+}
+
+message GetServerResponse {
+  repeated Server server = 1;
 }
