@@ -13,17 +13,19 @@ enum ServerType {
 
 message Server {
   string server_id = 1;
-  string name = 2;
-  string host = 3;
-  string port = 4;
-  ServerType server_type = 5;
+  string node_id = 2;
+  string name = 3;
+  string host = 4;
+  string port = 5;
+  ServerType server_type = 6;
 }
 
 message GetServersRequest {
   repeated ServerType server_type = 1;
-  optional string name = 2;
-  optional string host = 3;
-  optional string port = 4;
+  optional string node_id = 2;
+  optional string name = 3;
+  optional string host = 4;
+  optional string port = 5;
 }
 
 message GetServersResponse {
