@@ -38,10 +38,10 @@ message GetServerResponse {
   repeated Server server = 1;
 }
 
-message GetServersAddressRequest {
+message GetServersAddressesRequest {
   ServerType server_type = 1;
 }
 
-message GetServersAddressResponse {
+message GetServersAddressesResponse {
   repeated Server servers = 1;
 }
