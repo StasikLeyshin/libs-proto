@@ -20,7 +20,7 @@ message Server {
 }
 
 message GetServersRequest {
-  ServerType server_type = 1;
+  repeated ServerType server_type = 1;
   optional string name = 2;
   optional string host = 3;
   optional string port = 4;
@@ -36,4 +36,12 @@ message GetServerRequest {
 
 message GetServerResponse {
   repeated Server server = 1;
+}
+
+message GetServersAddressRequest {
+  ServerType server_type = 1;
+}
+
+message GetServersAddressResponse {
+  repeated Server servers = 1;
 }

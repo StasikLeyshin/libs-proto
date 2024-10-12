@@ -153,10 +153,10 @@ type GetServersRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ServerType ServerType `protobuf:"varint,1,opt,name=server_type,json=serverType,proto3,enum=pb.ServerType" json:"server_type,omitempty"`
-	Name       *string    `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	Host       *string    `protobuf:"bytes,3,opt,name=host,proto3,oneof" json:"host,omitempty"`
-	Port       *string    `protobuf:"bytes,4,opt,name=port,proto3,oneof" json:"port,omitempty"`
+	ServerType []ServerType `protobuf:"varint,1,rep,packed,name=server_type,json=serverType,proto3,enum=pb.ServerType" json:"server_type,omitempty"`
+	Name       *string      `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	Host       *string      `protobuf:"bytes,3,opt,name=host,proto3,oneof" json:"host,omitempty"`
+	Port       *string      `protobuf:"bytes,4,opt,name=port,proto3,oneof" json:"port,omitempty"`
 }
 
 func (x *GetServersRequest) Reset() {
@@ -191,11 +191,11 @@ func (*GetServersRequest) Descriptor() ([]byte, []int) {
 	return file_grpc_manage_server_service_proto_server_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetServersRequest) GetServerType() ServerType {
+func (x *GetServersRequest) GetServerType() []ServerType {
 	if x != nil {
 		return x.ServerType
 	}
-	return ServerType_server_type_gateway
+	return nil
 }
 
 func (x *GetServersRequest) GetName() string {
@@ -360,6 +360,100 @@ func (x *GetServerResponse) GetServer() []*Server {
 	return nil
 }
 
+type GetServersAddressRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ServerType ServerType `protobuf:"varint,1,opt,name=server_type,json=serverType,proto3,enum=pb.ServerType" json:"server_type,omitempty"`
+}
+
+func (x *GetServersAddressRequest) Reset() {
+	*x = GetServersAddressRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_grpc_manage_server_service_proto_server_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetServersAddressRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetServersAddressRequest) ProtoMessage() {}
+
+func (x *GetServersAddressRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_grpc_manage_server_service_proto_server_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetServersAddressRequest.ProtoReflect.Descriptor instead.
+func (*GetServersAddressRequest) Descriptor() ([]byte, []int) {
+	return file_grpc_manage_server_service_proto_server_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetServersAddressRequest) GetServerType() ServerType {
+	if x != nil {
+		return x.ServerType
+	}
+	return ServerType_server_type_gateway
+}
+
+type GetServersAddressResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Servers []*Server `protobuf:"bytes,1,rep,name=servers,proto3" json:"servers,omitempty"`
+}
+
+func (x *GetServersAddressResponse) Reset() {
+	*x = GetServersAddressResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_grpc_manage_server_service_proto_server_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetServersAddressResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetServersAddressResponse) ProtoMessage() {}
+
+func (x *GetServersAddressResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_grpc_manage_server_service_proto_server_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetServersAddressResponse.ProtoReflect.Descriptor instead.
+func (*GetServersAddressResponse) Descriptor() ([]byte, []int) {
+	return file_grpc_manage_server_service_proto_server_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetServersAddressResponse) GetServers() []*Server {
+	if x != nil {
+		return x.Servers
+	}
+	return nil
+}
+
 var File_grpc_manage_server_service_proto_server_proto protoreflect.FileDescriptor
 
 var file_grpc_manage_server_service_proto_server_proto_rawDesc = []byte{
@@ -378,7 +472,7 @@ var file_grpc_manage_server_service_proto_server_proto_rawDesc = []byte{
 	0x72, 0x76, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x22, 0xaa, 0x01, 0x0a, 0x11, 0x47, 0x65, 0x74,
 	0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2f,
 	0x0a, 0x0b, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x0e, 0x32, 0x0e, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x54,
+	0x03, 0x28, 0x0e, 0x32, 0x0e, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x54,
 	0x79, 0x70, 0x65, 0x52, 0x0a, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12,
 	0x17, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52,
 	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x88, 0x01, 0x01, 0x12, 0x17, 0x0a, 0x04, 0x68, 0x6f, 0x73, 0x74,
@@ -396,7 +490,16 @@ var file_grpc_manage_server_service_proto_server_proto_rawDesc = []byte{
 	0x49, 0x64, 0x22, 0x37, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x52,
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x22, 0x0a, 0x06, 0x73, 0x65, 0x72, 0x76, 0x65,
 	0x72, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x65, 0x72,
-	0x76, 0x65, 0x72, 0x52, 0x06, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x2a, 0x5a, 0x0a, 0x0a, 0x53,
+	0x76, 0x65, 0x72, 0x52, 0x06, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x22, 0x4b, 0x0a, 0x18, 0x47,
+	0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2f, 0x0a, 0x0b, 0x73, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x0e, 0x2e, 0x70,
+	0x62, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0a, 0x73, 0x65,
+	0x72, 0x76, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x22, 0x41, 0x0a, 0x19, 0x47, 0x65, 0x74, 0x53,
+	0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x24, 0x0a, 0x07, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x70, 0x62, 0x2e, 0x53, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x52, 0x07, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x73, 0x2a, 0x5a, 0x0a, 0x0a, 0x53,
 	0x65, 0x72, 0x76, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x12, 0x17, 0x0a, 0x13, 0x73, 0x65, 0x72,
 	0x76, 0x65, 0x72, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x5f, 0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79,
 	0x10, 0x00, 0x12, 0x14, 0x0a, 0x10, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f, 0x74, 0x79, 0x70,
@@ -419,25 +522,29 @@ func file_grpc_manage_server_service_proto_server_proto_rawDescGZIP() []byte {
 }
 
 var file_grpc_manage_server_service_proto_server_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_grpc_manage_server_service_proto_server_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_grpc_manage_server_service_proto_server_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_grpc_manage_server_service_proto_server_proto_goTypes = []interface{}{
-	(ServerType)(0),            // 0: pb.ServerType
-	(*Server)(nil),             // 1: pb.Server
-	(*GetServersRequest)(nil),  // 2: pb.GetServersRequest
-	(*GetServersResponse)(nil), // 3: pb.GetServersResponse
-	(*GetServerRequest)(nil),   // 4: pb.GetServerRequest
-	(*GetServerResponse)(nil),  // 5: pb.GetServerResponse
+	(ServerType)(0),                   // 0: pb.ServerType
+	(*Server)(nil),                    // 1: pb.Server
+	(*GetServersRequest)(nil),         // 2: pb.GetServersRequest
+	(*GetServersResponse)(nil),        // 3: pb.GetServersResponse
+	(*GetServerRequest)(nil),          // 4: pb.GetServerRequest
+	(*GetServerResponse)(nil),         // 5: pb.GetServerResponse
+	(*GetServersAddressRequest)(nil),  // 6: pb.GetServersAddressRequest
+	(*GetServersAddressResponse)(nil), // 7: pb.GetServersAddressResponse
 }
 var file_grpc_manage_server_service_proto_server_proto_depIdxs = []int32{
 	0, // 0: pb.Server.server_type:type_name -> pb.ServerType
 	0, // 1: pb.GetServersRequest.server_type:type_name -> pb.ServerType
 	1, // 2: pb.GetServersResponse.servers:type_name -> pb.Server
 	1, // 3: pb.GetServerResponse.server:type_name -> pb.Server
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	0, // 4: pb.GetServersAddressRequest.server_type:type_name -> pb.ServerType
+	1, // 5: pb.GetServersAddressResponse.servers:type_name -> pb.Server
+	6, // [6:6] is the sub-list for method output_type
+	6, // [6:6] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_grpc_manage_server_service_proto_server_proto_init() }
@@ -506,6 +613,30 @@ func file_grpc_manage_server_service_proto_server_proto_init() {
 				return nil
 			}
 		}
+		file_grpc_manage_server_service_proto_server_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetServersAddressRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_grpc_manage_server_service_proto_server_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetServersAddressResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	file_grpc_manage_server_service_proto_server_proto_msgTypes[1].OneofWrappers = []interface{}{}
 	type x struct{}
@@ -514,7 +645,7 @@ func file_grpc_manage_server_service_proto_server_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_grpc_manage_server_service_proto_server_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   5,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
