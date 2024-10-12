@@ -20,7 +20,7 @@ message Server {
 }
 
 message GetServersRequest {
-  string server_type = 1;
+  ServerType server_type = 1;
   optional string name = 2;
   optional string host = 3;
   optional string port = 4;
