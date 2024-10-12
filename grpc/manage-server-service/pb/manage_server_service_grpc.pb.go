@@ -19,8 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ManageService_GetServer_FullMethodName  = "/pb.ManageService/GetServer"
-	ManageService_GetServers_FullMethodName = "/pb.ManageService/GetServers"
+	ManageService_GetServer_FullMethodName           = "/pb.ManageService/GetServer"
+	ManageService_GetServers_FullMethodName          = "/pb.ManageService/GetServers"
+	ManageService_GetServersAddresses_FullMethodName = "/pb.ManageService/GetServersAddresses"
 )
 
 // ManageServiceClient is the client API for ManageService service.
@@ -29,6 +30,7 @@ const (
 type ManageServiceClient interface {
 	GetServer(ctx context.Context, in *GetServerRequest, opts ...grpc.CallOption) (*GetServerResponse, error)
 	GetServers(ctx context.Context, in *GetServersRequest, opts ...grpc.CallOption) (*GetServersResponse, error)
+	GetServersAddresses(ctx context.Context, in *GetServersAddressesRequest, opts ...grpc.CallOption) (*GetServersAddressesResponse, error)
 }
 
 type manageServiceClient struct {
@@ -57,12 +59,22 @@ func (c *manageServiceClient) GetServers(ctx context.Context, in *GetServersRequ
 	return out, nil
 }
 
+func (c *manageServiceClient) GetServersAddresses(ctx context.Context, in *GetServersAddressesRequest, opts ...grpc.CallOption) (*GetServersAddressesResponse, error) {
+	out := new(GetServersAddressesResponse)
+	err := c.cc.Invoke(ctx, ManageService_GetServersAddresses_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ManageServiceServer is the server API for ManageService service.
 // All implementations must embed UnimplementedManageServiceServer
 // for forward compatibility
 type ManageServiceServer interface {
 	GetServer(context.Context, *GetServerRequest) (*GetServerResponse, error)
 	GetServers(context.Context, *GetServersRequest) (*GetServersResponse, error)
+	GetServersAddresses(context.Context, *GetServersAddressesRequest) (*GetServersAddressesResponse, error)
 	mustEmbedUnimplementedManageServiceServer()
 }
 
@@ -75,6 +87,9 @@ func (UnimplementedManageServiceServer) GetServer(context.Context, *GetServerReq
 }
 func (UnimplementedManageServiceServer) GetServers(context.Context, *GetServersRequest) (*GetServersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetServers not implemented")
+}
+func (UnimplementedManageServiceServer) GetServersAddresses(context.Context, *GetServersAddressesRequest) (*GetServersAddressesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetServersAddresses not implemented")
 }
 func (UnimplementedManageServiceServer) mustEmbedUnimplementedManageServiceServer() {}
 
@@ -125,6 +140,24 @@ func _ManageService_GetServers_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ManageService_GetServersAddresses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetServersAddressesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ManageServiceServer).GetServersAddresses(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ManageService_GetServersAddresses_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ManageServiceServer).GetServersAddresses(ctx, req.(*GetServersAddressesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ManageService_ServiceDesc is the grpc.ServiceDesc for ManageService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -139,6 +172,10 @@ var ManageService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetServers",
 			Handler:    _ManageService_GetServers_Handler,
+		},
+		{
+			MethodName: "GetServersAddresses",
+			Handler:    _ManageService_GetServersAddresses_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
