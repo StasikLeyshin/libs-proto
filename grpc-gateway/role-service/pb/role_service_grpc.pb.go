@@ -4,7 +4,7 @@
 // - protoc             v4.25.1
 // source: role-service/proto/role_service.proto
 
-package pb
+package grpc_pb
 
 import (
 	context "context"
