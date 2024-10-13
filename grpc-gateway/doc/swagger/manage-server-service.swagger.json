@@ -35,6 +35,32 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "host",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "port",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "tags": [
           "ManageService"
         ]
