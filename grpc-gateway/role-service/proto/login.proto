@@ -5,7 +5,7 @@ package pb;
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "./;grpc_pb";
+option go_package = "./;grpc_gateway_pb";
 
 message User {
   // ID пользователя.

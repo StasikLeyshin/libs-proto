@@ -23,9 +23,9 @@ else
 endif
 
 gen_grpc_gateway_proto = protoc --proto_path=$(DIR_GRPC_GATEWAY) \
-                                --go_out=$(DIR_GRPC_GATEWAY)/$(1)/pb \
-                                --go-grpc_out=$(DIR_GRPC_GATEWAY)/$(1)/pb \
-                                --grpc-gateway_out=$(DIR_GRPC_GATEWAY)/$(1)/pb \
+                                --go_out=$(DIR_GRPC_GATEWAY)/$(1)/grpc_gateway_pb \
+                                --go-grpc_out=$(DIR_GRPC_GATEWAY)/$(1)/grpc_gateway_pb \
+                                --grpc-gateway_out=$(DIR_GRPC_GATEWAY)/$(1)/grpc_gateway_pb \
                                 --openapiv2_out=$(DIR_GRPC_GATEWAY)/doc/swagger \
                                 --openapiv2_opt=allow_merge=true,merge_file_name=$(1) \
                                 $(DIR_GRPC_GATEWAY)/$(1)/proto/*.proto
@@ -37,7 +37,8 @@ gen_grpc_proto = protoc --proto_path=. \
 
 all: gen_grpc_gateway_manage_server_service \
      gen_grpc_manage_server_service \
-     gen_grpc_gateway_role_service
+     gen_grpc_gateway_role_service \
+     gen_grpc_role_service
 
 gen_grpc_gateway_manage_server_service:
 	$(call gen_grpc_gateway_proto,$(DIR_MANAGE_SERVER_SERVICE))
@@ -47,3 +48,6 @@ gen_grpc_manage_server_service:
 
 gen_grpc_gateway_role_service:
 	$(call gen_grpc_gateway_proto,$(DIR_ROLE_SERVICE))
+
+gen_grpc_role_service:
+	$(call gen_grpc_proto,$(DIR_ROLE_SERVICE))
