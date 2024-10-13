@@ -19,7 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	RoleService_Login_FullMethodName = "/pb.RoleService/Login"
+	RoleService_Login_FullMethodName = "/grpc_gateway_pb.RoleService/Login"
 )
 
 // RoleServiceClient is the client API for RoleService service.
@@ -96,7 +96,7 @@ func _RoleService_Login_Handler(srv interface{}, ctx context.Context, dec func(i
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var RoleService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "pb.RoleService",
+	ServiceName: "grpc_gateway_pb.RoleService",
 	HandlerType: (*RoleServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

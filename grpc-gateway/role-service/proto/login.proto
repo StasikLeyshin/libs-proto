@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package pb;
+package grpc_gateway_pb;
 
 import "protoc-gen-openapiv2/options/annotations.proto";
 import "google/protobuf/timestamp.proto";

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package pb;
+package grpc_gateway_pb;
 
 option go_package = "./;grpc_gateway_pb";
 
