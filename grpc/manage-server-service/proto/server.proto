@@ -10,7 +10,6 @@ enum ServerType {
   server_type_manage_server = 2;
 }
 
-
 message Server {
   string server_id = 1;
   string node_id = 2;

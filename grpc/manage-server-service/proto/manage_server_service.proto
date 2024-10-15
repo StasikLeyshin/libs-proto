@@ -5,6 +5,13 @@ package pb;
 option go_package = "./;pb";
 
 import "grpc/manage-server-service/proto/server.proto";
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.FileOptions   {
+  optional string service_name = 50000;
+}
+
+option (service_name) = "manage_server";
 
 service ManageService {
   rpc GetServer(GetServerRequest) returns (GetServerResponse);
