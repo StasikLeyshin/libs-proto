@@ -23,18 +23,18 @@ const (
 var file_grpc_manage_server_service_proto_manage_server_service_proto_extTypes = []protoimpl.ExtensionInfo{
 	{
 		ExtendedType:  (*descriptorpb.FileOptions)(nil),
-		ExtensionType: (*string)(nil),
+		ExtensionType: (*ServerName)(nil),
 		Field:         50000,
-		Name:          "pb.service_name",
-		Tag:           "bytes,50000,opt,name=service_name",
+		Name:          "pb.server_name",
+		Tag:           "varint,50000,opt,name=server_name,enum=pb.ServerName",
 		Filename:      "grpc/manage-server-service/proto/manage_server_service.proto",
 	},
 }
 
 // Extension fields to descriptorpb.FileOptions.
 var (
-	// optional string service_name = 50000;
-	E_ServiceName = &file_grpc_manage_server_service_proto_manage_server_service_proto_extTypes[0]
+	// optional pb.ServerName server_name = 50000;
+	E_ServerName = &file_grpc_manage_server_service_proto_manage_server_service_proto_extTypes[0]
 )
 
 var File_grpc_manage_server_service_proto_manage_server_service_proto protoreflect.FileDescriptor
@@ -63,35 +63,37 @@ var file_grpc_manage_server_service_proto_manage_server_service_proto_rawDesc = 
 	0x65, 0x72, 0x73, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x70, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76,
 	0x65, 0x72, 0x73, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x3a, 0x44, 0x0a, 0x0c, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5f,
-	0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x46, 0x69, 0x6c, 0x65, 0x4f, 0x70, 0x74, 0x69, 0x6f,
-	0x6e, 0x73, 0x18, 0xd0, 0x86, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x73, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x88, 0x01, 0x01, 0x42, 0x18, 0x82, 0xb5, 0x18, 0x0d,
-	0x6d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5a, 0x05, 0x2e,
-	0x2f, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x6e, 0x73, 0x65, 0x3a, 0x52, 0x0a, 0x0b, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f, 0x6e,
+	0x61, 0x6d, 0x65, 0x12, 0x1c, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x46, 0x69, 0x6c, 0x65, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e,
+	0x73, 0x18, 0xd0, 0x86, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x0e, 0x2e, 0x70, 0x62, 0x2e, 0x53,
+	0x65, 0x72, 0x76, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x0a, 0x73, 0x65, 0x72, 0x76, 0x65,
+	0x72, 0x4e, 0x61, 0x6d, 0x65, 0x88, 0x01, 0x01, 0x42, 0x0b, 0x80, 0xb5, 0x18, 0x02, 0x5a, 0x05,
+	0x2e, 0x2f, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var file_grpc_manage_server_service_proto_manage_server_service_proto_goTypes = []interface{}{
 	(*descriptorpb.FileOptions)(nil),    // 0: google.protobuf.FileOptions
-	(*GetServerRequest)(nil),            // 1: pb.GetServerRequest
-	(*GetServersRequest)(nil),           // 2: pb.GetServersRequest
-	(*GetServersAddressesRequest)(nil),  // 3: pb.GetServersAddressesRequest
-	(*GetServerResponse)(nil),           // 4: pb.GetServerResponse
-	(*GetServersResponse)(nil),          // 5: pb.GetServersResponse
-	(*GetServersAddressesResponse)(nil), // 6: pb.GetServersAddressesResponse
+	(ServerName)(0),                     // 1: pb.ServerName
+	(*GetServerRequest)(nil),            // 2: pb.GetServerRequest
+	(*GetServersRequest)(nil),           // 3: pb.GetServersRequest
+	(*GetServersAddressesRequest)(nil),  // 4: pb.GetServersAddressesRequest
+	(*GetServerResponse)(nil),           // 5: pb.GetServerResponse
+	(*GetServersResponse)(nil),          // 6: pb.GetServersResponse
+	(*GetServersAddressesResponse)(nil), // 7: pb.GetServersAddressesResponse
 }
 var file_grpc_manage_server_service_proto_manage_server_service_proto_depIdxs = []int32{
-	0, // 0: pb.service_name:extendee -> google.protobuf.FileOptions
-	1, // 1: pb.ManageService.GetServer:input_type -> pb.GetServerRequest
-	2, // 2: pb.ManageService.GetServers:input_type -> pb.GetServersRequest
-	3, // 3: pb.ManageService.GetServersAddresses:input_type -> pb.GetServersAddressesRequest
-	4, // 4: pb.ManageService.GetServer:output_type -> pb.GetServerResponse
-	5, // 5: pb.ManageService.GetServers:output_type -> pb.GetServersResponse
-	6, // 6: pb.ManageService.GetServersAddresses:output_type -> pb.GetServersAddressesResponse
-	4, // [4:7] is the sub-list for method output_type
-	1, // [1:4] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
+	0, // 0: pb.server_name:extendee -> google.protobuf.FileOptions
+	1, // 1: pb.server_name:type_name -> pb.ServerName
+	2, // 2: pb.ManageService.GetServer:input_type -> pb.GetServerRequest
+	3, // 3: pb.ManageService.GetServers:input_type -> pb.GetServersRequest
+	4, // 4: pb.ManageService.GetServersAddresses:input_type -> pb.GetServersAddressesRequest
+	5, // 5: pb.ManageService.GetServer:output_type -> pb.GetServerResponse
+	6, // 6: pb.ManageService.GetServers:output_type -> pb.GetServersResponse
+	7, // 7: pb.ManageService.GetServersAddresses:output_type -> pb.GetServersAddressesResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
+	1, // [1:2] is the sub-list for extension type_name
 	0, // [0:1] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
 }

@@ -8,10 +8,18 @@ import "grpc/manage-server-service/proto/server.proto";
 import "google/protobuf/descriptor.proto";
 
 extend google.protobuf.FileOptions   {
-  optional string service_name = 50000;
+  optional ServerName server_name = 50000;
 }
 
-option (service_name) = "manage_server";
+option (server_name) = server;
+
+//extend google.protobuf.MessageOptions {
+//  optional string my_option = 51234;
+//}
+
+//message ServerName {
+//  option (my_option) = "Hello manage_server!";
+//}
 
 service ManageService {
   rpc GetServer(GetServerRequest) returns (GetServerResponse);

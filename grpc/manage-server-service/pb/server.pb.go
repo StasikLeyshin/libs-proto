@@ -69,6 +69,55 @@ func (ServerType) EnumDescriptor() ([]byte, []int) {
 	return file_grpc_manage_server_service_proto_server_proto_rawDescGZIP(), []int{0}
 }
 
+type ServerName int32
+
+const (
+	ServerName_gateway ServerName = 0
+	ServerName_role    ServerName = 1
+	ServerName_server  ServerName = 2
+)
+
+// Enum value maps for ServerName.
+var (
+	ServerName_name = map[int32]string{
+		0: "gateway",
+		1: "role",
+		2: "server",
+	}
+	ServerName_value = map[string]int32{
+		"gateway": 0,
+		"role":    1,
+		"server":  2,
+	}
+)
+
+func (x ServerName) Enum() *ServerName {
+	p := new(ServerName)
+	*p = x
+	return p
+}
+
+func (x ServerName) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ServerName) Descriptor() protoreflect.EnumDescriptor {
+	return file_grpc_manage_server_service_proto_server_proto_enumTypes[1].Descriptor()
+}
+
+func (ServerName) Type() protoreflect.EnumType {
+	return &file_grpc_manage_server_service_proto_server_proto_enumTypes[1]
+}
+
+func (x ServerName) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ServerName.Descriptor instead.
+func (ServerName) EnumDescriptor() ([]byte, []int) {
+	return file_grpc_manage_server_service_proto_server_proto_rawDescGZIP(), []int{1}
+}
+
 type Server struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -525,8 +574,11 @@ var file_grpc_manage_server_service_proto_server_proto_rawDesc = []byte{
 	0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x10, 0x00, 0x12, 0x14, 0x0a, 0x10, 0x73, 0x65, 0x72,
 	0x76, 0x65, 0x72, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x5f, 0x72, 0x6f, 0x6c, 0x65, 0x10, 0x01, 0x12,
 	0x1d, 0x0a, 0x19, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x5f, 0x6d,
-	0x61, 0x6e, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x10, 0x02, 0x42, 0x07,
-	0x5a, 0x05, 0x2e, 0x2f, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x61, 0x6e, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x10, 0x02, 0x2a, 0x2f,
+	0x0a, 0x0a, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x0b, 0x0a, 0x07,
+	0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x10, 0x00, 0x12, 0x08, 0x0a, 0x04, 0x72, 0x6f, 0x6c,
+	0x65, 0x10, 0x01, 0x12, 0x0a, 0x0a, 0x06, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x10, 0x02, 0x42,
+	0x07, 0x5a, 0x05, 0x2e, 0x2f, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -541,25 +593,26 @@ func file_grpc_manage_server_service_proto_server_proto_rawDescGZIP() []byte {
 	return file_grpc_manage_server_service_proto_server_proto_rawDescData
 }
 
-var file_grpc_manage_server_service_proto_server_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_grpc_manage_server_service_proto_server_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_grpc_manage_server_service_proto_server_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_grpc_manage_server_service_proto_server_proto_goTypes = []interface{}{
 	(ServerType)(0),                     // 0: pb.ServerType
-	(*Server)(nil),                      // 1: pb.Server
-	(*GetServersRequest)(nil),           // 2: pb.GetServersRequest
-	(*GetServersResponse)(nil),          // 3: pb.GetServersResponse
-	(*GetServerRequest)(nil),            // 4: pb.GetServerRequest
-	(*GetServerResponse)(nil),           // 5: pb.GetServerResponse
-	(*GetServersAddressesRequest)(nil),  // 6: pb.GetServersAddressesRequest
-	(*GetServersAddressesResponse)(nil), // 7: pb.GetServersAddressesResponse
+	(ServerName)(0),                     // 1: pb.ServerName
+	(*Server)(nil),                      // 2: pb.Server
+	(*GetServersRequest)(nil),           // 3: pb.GetServersRequest
+	(*GetServersResponse)(nil),          // 4: pb.GetServersResponse
+	(*GetServerRequest)(nil),            // 5: pb.GetServerRequest
+	(*GetServerResponse)(nil),           // 6: pb.GetServerResponse
+	(*GetServersAddressesRequest)(nil),  // 7: pb.GetServersAddressesRequest
+	(*GetServersAddressesResponse)(nil), // 8: pb.GetServersAddressesResponse
 }
 var file_grpc_manage_server_service_proto_server_proto_depIdxs = []int32{
 	0, // 0: pb.Server.server_type:type_name -> pb.ServerType
 	0, // 1: pb.GetServersRequest.server_type:type_name -> pb.ServerType
-	1, // 2: pb.GetServersResponse.servers:type_name -> pb.Server
-	1, // 3: pb.GetServerResponse.server:type_name -> pb.Server
+	2, // 2: pb.GetServersResponse.servers:type_name -> pb.Server
+	2, // 3: pb.GetServerResponse.server:type_name -> pb.Server
 	0, // 4: pb.GetServersAddressesRequest.server_type:type_name -> pb.ServerType
-	1, // 5: pb.GetServersAddressesResponse.servers:type_name -> pb.Server
+	2, // 5: pb.GetServersAddressesResponse.servers:type_name -> pb.Server
 	6, // [6:6] is the sub-list for method output_type
 	6, // [6:6] is the sub-list for method input_type
 	6, // [6:6] is the sub-list for extension type_name
@@ -664,7 +717,7 @@ func file_grpc_manage_server_service_proto_server_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_grpc_manage_server_service_proto_server_proto_rawDesc,
-			NumEnums:      1,
+			NumEnums:      2,
 			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
