@@ -6,6 +6,17 @@ option go_package = "./;pb";
 
 import "grpc/role-service/proto/login.proto";
 
+import "grpc/manage-server-service/proto/server.proto";
+
+import "google/protobuf/descriptor.proto";
+
+
+extend google.protobuf.FileOptions   {
+  optional ServerName server_name = 50000;
+}
+
+option (server_name) = role;
+
 service RoleService {
   rpc Login(LoginRequest) returns (LoginResponse);
 }
