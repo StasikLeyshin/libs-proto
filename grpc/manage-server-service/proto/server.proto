@@ -10,11 +10,11 @@ enum ServerType {
   server_type_manage_server = 2;
 }
 
-enum ServerName {
-  gateway = 0;
-  role = 1;
-  server = 2;
-}
+//enum ServerName {
+//  gateway = 0;
+//  role = 1;
+//  server = 2;
+//}
 
 message Server {
   string server_id = 1;
