@@ -14,7 +14,7 @@ service ManageService {
       get: "/v1/servers"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      description: "API для получения сактивных сервисов";
+      description: "API для получения серверов";
       summary: "Get Servers";
     };
   }
