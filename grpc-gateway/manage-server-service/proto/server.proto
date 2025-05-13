@@ -17,6 +17,7 @@ message Server {
   string host = 4;
   string port = 5;
   ServerType server_type = 6;
+  string test = 7;
 }
 
 message GetServersRequest {

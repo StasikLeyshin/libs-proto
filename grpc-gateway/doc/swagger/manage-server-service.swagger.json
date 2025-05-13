@@ -19,7 +19,7 @@
     "/v1/servers": {
       "get": {
         "summary": "Get Servers",
-        "description": "API для получения сактивных сервисов",
+        "description": "API для получения серверов",
         "operationId": "ManageService_GetServers",
         "responses": {
           "200": {
@@ -37,7 +37,22 @@
         },
         "parameters": [
           {
-            "name": "type",
+            "name": "serverType",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "server_type_gateway",
+                "server_type_role",
+                "server_type_manage_server"
+              ]
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "nodeId",
             "in": "query",
             "required": false,
             "type": "string"
@@ -83,6 +98,12 @@
     "pbServer": {
       "type": "object",
       "properties": {
+        "serverId": {
+          "type": "string"
+        },
+        "nodeId": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
@@ -92,10 +113,22 @@
         "port": {
           "type": "string"
         },
-        "type": {
+        "serverType": {
+          "$ref": "#/definitions/pbServerType"
+        },
+        "test": {
           "type": "string"
         }
       }
+    },
+    "pbServerType": {
+      "type": "string",
+      "enum": [
+        "server_type_gateway",
+        "server_type_role",
+        "server_type_manage_server"
+      ],
+      "default": "server_type_gateway"
     },
     "protobufAny": {
       "type": "object",

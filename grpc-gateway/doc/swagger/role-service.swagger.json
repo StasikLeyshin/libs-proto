@@ -25,7 +25,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/pbLoginResponse"
+              "$ref": "#/definitions/grpc_gateway_pbLoginResponse"
             }
           },
           "default": {
@@ -41,7 +41,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/pbLoginRequest"
+              "$ref": "#/definitions/grpc_gateway_pbLoginRequest"
             }
           }
         ],
@@ -52,7 +52,7 @@
     }
   },
   "definitions": {
-    "pbLoginRequest": {
+    "grpc_gateway_pbLoginRequest": {
       "type": "object",
       "properties": {
         "username": {
@@ -71,12 +71,12 @@
         }
       }
     },
-    "pbLoginResponse": {
+    "grpc_gateway_pbLoginResponse": {
       "type": "object",
       "properties": {
         "sessionId": {
           "type": "string",
-          "description": "string access_token = 3;\n  string refresh_token = 4;\n  google.protobuf.Timestamp access_token_expires_at = 5;\n  google.protobuf.Timestamp refresh_token_expires_at = 6;",
+          "description": "string access_token = 2;\n  string refresh_token = 4;\n  google.protobuf.Timestamp access_token_expires_at = 5;\n  google.protobuf.Timestamp refresh_token_expires_at = 6;",
           "title": "User user = 1;"
         }
       }
